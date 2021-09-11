@@ -1,0 +1,57 @@
+{
+    "name": "appoly/zipper",
+    "type": "library",
+    "description": "This is a little neat helper for the ZipArchive methods with handy functions",
+    "keywords": ["laravel", "ZIP", "Archive"],
+    "homepage": "http://github.com/appoly/zipper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nils Plaschke",
+            "email": "github@nilsplaschke.de",
+            "homepage": "http://nilsplaschke.de",
+            "role": "Developer"
+        },
+        {
+            "name": "James Merrix",
+            "email": "james@appoly.co.uk",
+            "homepage": "https://www.appoly.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5",
+        "ext-zip": "*",
+        "illuminate/support": "^8.0",
+        "illuminate/filesystem": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "mockery/mockery": "^1.3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Appoly\\Zipper\\": "src/appoly/Zipper"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Appoly\\Zipper\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Appoly\\Zipper\\ZipperServiceProvider"
+            ],
+            "aliases": {
+                "Zipper": "Appoly\\Zipper\\Zipper"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

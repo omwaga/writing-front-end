@@ -1,0 +1,38 @@
+{
+    "name": "tanthammar/tall-forms",
+    "description": "A dynamic, responsive Laravel Livewire form generator with realtime validation, file uploads, array fields, and more.",
+    "keywords": [
+        "tailwind",
+        "alpinejs",
+        "livewire",
+        "forms",
+        "laravel"
+    ],
+    "homepage": "https://github.com/tanthammar/tall-forms",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tina Hammar",
+            "email": "post@tinahammar.se",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4.0|^8.0",
+        "livewire/livewire": "^2.3.5|dev-master",
+        "laravel/framework": "^7.0|^8.24.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tanthammar\\TallForms\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tanthammar\\TallForms\\FormServiceProvider"
+            ]
+        }
+    }
+}
