@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
+use Artesaos\SEOTools\Facades\SEOMeta;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -36,12 +38,25 @@ class Controller extends BaseController
             ->orderBy('language')
             ->get();
 
+            //Page SEO
+        SEOMeta::setTitle("Home")
+                 ->setDescription("description")
+                 ->setKeywords("keywords")
+                 ->addKeyword("keyword")
+                 ->addMeta("meta", "value");
+
         return view('index', ['types' => $result]);
     }
 
-    public function WriterView($id)
+    public function WriterView($id) 
     {
         $writer = Writer::whereId($id)->with(['ratings'])->first();
+
+            //Page SEO
+            SEOMeta::setTitle($writer->name)->setDescription($writer->about )->setKeywords("keywords")
+            ->addKeyword("keyword")
+            ->addMeta("meta", "value");
+
         return view('user.writers.view', compact('writer'));
     }
 
@@ -96,6 +111,9 @@ class Controller extends BaseController
     public function OrderNow()
     {
         session()->flash('message', 'Sign in or create an account to make an order.');
+    
+        SEOMeta::setTitle("Order Now")
+                 ->setDescription("Sign in or create an account to make an order");
         return view('auth.login');
     }
 
@@ -221,6 +239,8 @@ class Controller extends BaseController
     {
         $posts = Post::latest()->get();
 
+        SEOMeta::setTitle("Blog")->setDescription("EssayFlame Blog");
+
         return view('blog', ['posts' => $posts]);
     }
 
@@ -229,6 +249,8 @@ class Controller extends BaseController
         $slug = $request->slug;
 
         $post = Post::where('slug', $slug)->get();
+
+        SEOMeta::setTitle($post->title)->setDescription($post->content);
 
         return view('blog.read', ['post' => $post]);
     }

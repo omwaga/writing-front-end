@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
+use Artesaos\SEOTools\Facades\SEOMeta;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,10 @@ Route::get('/login', function () {
 })->name('login')->middleware(['not-robot']);
 
 Route::get('/contact', function () {
+
+    SEOMeta::setTitle("Contact Us")
+             ->setDescription("We'd love to hear from you.");
+
     return view('contact');
 })->name('contact');
 
@@ -55,10 +60,16 @@ Route::get('/blog/{slug}', [Controller::class, 'readBlog'])
 Route::get('/top-writers', [TopWriters::class, 'index'])->name('top-writers');
 
 Route::get('/faqs', function () {
+    
+    SEOMeta::setTitle("FAQs")
+             ->setDescription("Frequently Asked Questions");
+
     return view('faqs');
 })->name('faqs');
 
 Route::get('/about', function () {
+    SEOMeta::setTitle("About Us")
+             ->setDescription("Essay Flame understands the pressure the students are facing and are ready to help whenever we have a call for action. ");
     return view('about');
 })->name('about');
 
