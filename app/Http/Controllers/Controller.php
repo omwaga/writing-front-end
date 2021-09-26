@@ -40,10 +40,14 @@ class Controller extends BaseController
 
             //Page SEO
         SEOMeta::setTitle("Home")
-                 ->setDescription("description")
+                 ->setDescription("Top writers")
                  ->setKeywords("keywords")
-                 ->addKeyword("keyword")
-                 ->addMeta("meta", "value");
+                 ->addKeyword(['How to write the 4 types of academic essay','Types of essays', 
+                 'What is an academic essay?',           
+                 '6 characteristics of an academic essay',
+                 'Essay writing tips',
+                 'Writing an essay'
+                 ]);
 
         return view('index', ['types' => $result]);
     }
@@ -53,9 +57,8 @@ class Controller extends BaseController
         $writer = Writer::whereId($id)->with(['ratings'])->first();
 
             //Page SEO
-            SEOMeta::setTitle($writer->name)->setDescription($writer->about )->setKeywords("keywords")
-            ->addKeyword("keyword")
-            ->addMeta("meta", "value");
+            SEOMeta::setTitle($writer->name)->setDescription($writer->about )->setKeywords("Top Writer")
+            ->addKeyword(['Top writers', 'Creative Writing ', 'Essay flame']);
 
         return view('user.writers.view', compact('writer'));
     }
@@ -239,7 +242,17 @@ class Controller extends BaseController
     {
         $posts = Post::latest()->get();
 
-        SEOMeta::setTitle("Blog")->setDescription("EssayFlame Blog");
+        SEOMeta::setTitle("Blog")->setDescription("EssayFlame Blog")->addKeyword(['Steps on how to research a topic',
+        'What is research?',
+        'Types of research methods',
+        'Inductive research methods',
+        'Deductive research methods',
+        'Qualitative research writers',
+        'Quantitative research writers',
+        'How to find verified sources for your paper',
+        '5 essential research tools',
+       ' Research topic guide ',
+        ]);
 
         return view('blog', ['posts' => $posts]);
     }
@@ -250,7 +263,17 @@ class Controller extends BaseController
 
         $post = Post::where('slug', $slug)->get();
 
-        SEOMeta::setTitle($post->title)->setDescription($post->content);
+        SEOMeta::setTitle($post->title)->setDescription($post->content)->addKeyword(['Steps on how to research a topic',
+        'What is research?',
+        'Types of research methods',
+        'Inductive research methods',
+        'Deductive research methods',
+        'Qualitative research writers',
+        'Quantitative research writers',
+        'How to find verified sources for your paper',
+        '5 essential research tools',
+       ' Research topic guide', 'Writing Case study'
+        ]);
 
         return view('blog.read', ['post' => $post]);
     }

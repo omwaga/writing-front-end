@@ -15,7 +15,7 @@ class Captchav2Controller extends Controller
     {
         //Page SEO
         SEOMeta::setTitle("Login")
-        ->setDescription("description");
+        ->setDescription("Essay Flame Login");
             
         return view('not-a-robot');
     }

@@ -47,7 +47,9 @@ Route::get('/login', function () {
 Route::get('/contact', function () {
 
     SEOMeta::setTitle("Contact Us")
-             ->setDescription("We'd love to hear from you.");
+             ->setDescription("We would love to hear from you.")
+             ->addKeyword(['Top grade writers',
+             'Top writers']);
 
     return view('contact');
 })->name('contact');
