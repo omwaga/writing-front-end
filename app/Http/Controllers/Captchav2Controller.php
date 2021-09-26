@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
+use Artesaos\SEOTools\Facades\SEOMeta;
+
 class Captchav2Controller extends Controller
 {
 
     public function NotARobot(Request $request)
     {
+        //Page SEO
+        SEOMeta::setTitle("Login")
+        ->setDescription("description");
+            
         return view('not-a-robot');
     }
 
